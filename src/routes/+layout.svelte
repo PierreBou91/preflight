@@ -1,6 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import WorkspaceNav from '$lib/components/WorkspaceNav.svelte';
+	import { recordStore } from '$lib/stores/records.svelte';
 	import { templateStore } from '$lib/stores/templates.svelte';
 	import { workspaceStore } from '$lib/stores/workspace.svelte';
 	import { Menu } from 'lucide-svelte';
@@ -12,6 +13,7 @@
 	// Initialize global store subscriptions in a valid effect context
 	workspaceStore.subscribe();
 	templateStore.subscribe();
+	recordStore.subscribe();
 </script>
 
 <svelte:head>

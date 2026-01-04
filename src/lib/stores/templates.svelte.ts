@@ -53,6 +53,13 @@ class TemplateStore {
     return id;
   }
 
+  async update(id: string, updates: Partial<PreflightTemplate>) {
+    await db.templates.update(id, {
+      ...updates,
+      updatedAt: Date.now()
+    });
+  }
+
   async delete(id: string) {
     await db.templates.delete(id);
     // Also delete associated items (Phase 2 will handle this more robustly)

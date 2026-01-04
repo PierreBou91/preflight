@@ -1,12 +1,23 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { itemStore } from '$lib/stores/items.svelte';
 	import { templateStore } from '$lib/stores/templates.svelte';
-	import { ArrowLeft, Plus } from 'lucide-svelte';
+	import { ArrowLeft, Plus, Trash2 } from 'lucide-svelte';
 	import ChecklistTree from './ChecklistTree.svelte';
+	import ConfirmationModal from './ConfirmationModal.svelte';
 
 	let { templateId } = $props();
 
 	let template = $derived(templateStore.templates.find((t) => t.id === templateId));
+
+	// Auto-save template changes with basic debouncing/tracking
+	$effect(() => {
+		if (template) {
+			// Trigger on property changes
+			const { name, pilot, description } = template;
+			templateStore.update(template.id, { name, pilot, description });
+		}
+	});
 
 	// Initialize itemStore for this template
 	$effect(() => {
@@ -15,8 +26,15 @@
 		}
 	});
 
+	let showDeleteModal = $state(false);
+
 	async function handleAddItem() {
 		await itemStore.add('New checklist item');
+	}
+
+	async function handleDelete() {
+		await templateStore.delete(templateId);
+		goto('/');
 	}
 </script>
 
@@ -27,15 +45,27 @@
 				<a href="/" class="p-2 text-text-secondary transition-colors hover:bg-bg-secondary">
 					<ArrowLeft size={20} />
 				</a>
-				<div>
-					<h2 class="text-2xl font-black tracking-tighter text-text-primary uppercase">
-						{template.name}
-					</h2>
-					<p class="text-sm text-text-secondary italic">Template Editor</p>
+				<div class="flex flex-col">
+					<input
+						type="text"
+						bind:value={template.name}
+						class="w-full max-w-lg border-b-2 border-transparent bg-transparent text-2xl font-black tracking-tighter text-text-primary uppercase transition-all outline-none focus:border-accent focus:text-accent"
+						placeholder="Untitled Template"
+					/>
+					<p class="mt-1 text-xs font-medium tracking-wide text-text-secondary italic">
+						Template Editor
+					</p>
 				</div>
 			</div>
 
 			<div class="flex items-center gap-4">
+				<button
+					onclick={() => (showDeleteModal = true)}
+					class="p-2 text-text-secondary transition-colors hover:text-error"
+					title="Delete Template"
+				>
+					<Trash2 size={20} />
+				</button>
 				<button onclick={handleAddItem} class="btn-primary flex items-center gap-2 px-4 py-2">
 					<Plus size={18} />
 					Add Item
@@ -90,6 +120,15 @@
 			</div>
 		</div>
 	</div>
+
+	<ConfirmationModal
+		bind:show={showDeleteModal}
+		title="Delete Template?"
+		message="This will permanently delete the template '{template.name}' and its items. This cannot be undone."
+		confirmText="Delete"
+		type="danger"
+		onConfirm={handleDelete}
+	/>
 {:else}
 	<div class="flex h-full items-center justify-center text-text-secondary italic">
 		Loading template...

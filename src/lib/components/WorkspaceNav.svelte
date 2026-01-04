@@ -1,8 +1,18 @@
 <script lang="ts">
 	import { workspaceStore } from '$lib/stores/workspace.svelte';
-	import { Check, Edit2, Folder, GripVertical, Plus, Trash2, X } from 'lucide-svelte';
+	import {
+		Check,
+		Edit2,
+		Folder,
+		GripVertical,
+		History as HistoryIcon,
+		Plus,
+		Trash2,
+		X
+	} from 'lucide-svelte';
 	import { dndzone } from 'svelte-dnd-action';
 	import { flip } from 'svelte/animate';
+	import ConfirmationModal from './ConfirmationModal.svelte';
 
 	let { isSidebarOpen = $bindable(false) } = $props();
 
@@ -10,6 +20,10 @@
 	let isAdding = $state(false);
 	let editingId = $state<string | null>(null);
 	let editingName = $state('');
+
+	// Modal state
+	let showDeleteModal = $state(false);
+	let workspaceToDelete = $state<{ id: string; name: string } | null>(null);
 
 	async function handleAdd() {
 		if (!newWorkspaceName.trim()) return;
@@ -27,9 +41,15 @@
 		editingId = null;
 	}
 
-	async function handleDelete(id: string) {
-		if (confirm('Delete this workspace and all its templates?')) {
-			await workspaceStore.delete(id);
+	function confirmDelete(id: string, name: string) {
+		workspaceToDelete = { id, name };
+		showDeleteModal = true;
+	}
+
+	async function handleDelete() {
+		if (workspaceToDelete) {
+			await workspaceStore.delete(workspaceToDelete.id);
+			workspaceToDelete = null;
 		}
 	}
 
@@ -131,7 +151,7 @@
 							<Edit2 size={12} />
 						</button>
 						<button
-							onclick={() => handleDelete(ws.id)}
+							onclick={() => confirmDelete(ws.id, ws.name)}
 							class="p-1 text-text-secondary hover:text-error"
 							title="Delete"
 						>
@@ -166,6 +186,19 @@
 				<span>New Workspace</span>
 			</button>
 		{/if}
+
+		<div class="mt-4 border-t border-text-secondary/20 pt-2">
+			<a
+				href="/history"
+				onclick={() => {
+					if (typeof window !== 'undefined' && window.innerWidth < 1024) isSidebarOpen = false;
+				}}
+				class="flex w-full items-center gap-2 p-2 text-left text-sm text-text-secondary transition-colors hover:bg-bg-elevated hover:text-accent"
+			>
+				<HistoryIcon size={16} />
+				<span>Record History</span>
+			</a>
+		</div>
 	</div>
 
 	<div
@@ -174,3 +207,12 @@
 		v0.0.1 ALPHA
 	</div>
 </div>
+
+<ConfirmationModal
+	bind:show={showDeleteModal}
+	title="Delete Workspace?"
+	message="This will permanently delete the workspace '{workspaceToDelete?.name}' and all its templates and records. This action cannot be undone."
+	confirmText="Delete Workspace"
+	type="danger"
+	onConfirm={handleDelete}
+/>

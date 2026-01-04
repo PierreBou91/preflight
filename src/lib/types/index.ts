@@ -26,11 +26,13 @@ export interface PreflightRecord {
 	id: string;
 	templateId: string;
 	name: string; // Template name + timestamp
+	pilot: string; // Person executing the checklist
 	createdAt: number;
 	completedAt?: number;
 	elapsedMs: number; // Total elapsed time
 	isPaused: boolean;
 	resumedAt?: number; // Timestamp for timer calculation
+	updatedAt?: number; // Last update timestamp
 	items: Record<string, ChecklistItem>; // Snapshot with check states
 }
 

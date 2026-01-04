@@ -1,38 +1,39 @@
-# sv
+# Preflight
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+**Modern Checklist Manager** for focused execution and data portability.
 
-## Creating a project
+Live at: [preflight.pbou.dev](https://preflight.pbou.dev/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
 
-```sh
-# create a new project in the current directory
-npx sv create
+- **Workspace Logic**: Organize templates into custom workspaces with drag-and-drop reordering.
+- **Hierarchical Templates**: Build complex checklists with nested items and sub-tasks.
+- **Active Execution**: Integrated timer with pause/resume functionality to track performance.
+- **Portability**: Full JSON Import/Export support for entire workspaces or individual backups.
+- **Local-First**: Powered by IndexedDB (Dexie) for fast, offline-capable persistence.
+- **Brutalist Aesthetic**: Premium high-contrast dark mode with sharp, geometric design.
 
-# create a new project in my-app
-npx sv create my-app
+## Tech Stack
+
+- **Framework**: [Svelte 5](https://svelte.dev/) + [SvelteKit](https://kit.svelte.dev/)
+- **Runtime/Manager**: [Bun](https://bun.sh/)
+- **Database**: [Dexie.js](https://dexie.org/) (IndexedDB)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Icons**: [Lucide Svelte](https://lucide.dev/)
+- **Deployment**: [Dokploy](https://dokploy.com/) via Nixpacks & svelte-adapter-bun
+
+## Development
+
+```bash
+# Install dependencies
+bun install
+
+# Start development server
+bun run dev
+
+# Build for production
+bun run build
+
+# Check for types and linting
+bun run check
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

@@ -1,0 +1,5 @@
+[setup]
+  node_version = "20"
+
+[start]
+  cmd = "bun ./build/index.js"

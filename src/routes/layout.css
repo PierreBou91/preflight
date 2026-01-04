@@ -3,16 +3,16 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-	--color-bg-primary: #1e1e2e;
-	--color-bg-secondary: #282a36;
-	--color-bg-elevated: #343746;
-	--color-text-primary: #f8f8f2;
-	--color-text-secondary: #6272a4;
-	--color-accent: #bd93f9;
-	--color-accent-hover: #caa8ff;
-	--color-success: #50fa7b;
-	--color-warning: #ffb86c;
-	--color-error: #ff5555;
+	--color-bg-primary: #1a1d1a;
+	--color-bg-secondary: #232a22;
+	--color-bg-elevated: #2d382c;
+	--color-text-primary: #d3c6aa;
+	--color-text-secondary: #859289;
+	--color-accent: #a7c080;
+	--color-accent-hover: #b8cc92;
+	--color-success: #83c092;
+	--color-warning: #dbbc7f;
+	--color-error: #e67e80;
 
 	--font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 

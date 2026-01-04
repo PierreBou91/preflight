@@ -69,9 +69,12 @@
 							<Clock size={12} />
 							<span>{new Date(template.createdAt).toLocaleDateString()}</span>
 						</div>
-						<button class="btn-secondary px-3 py-1 text-[10px] tracking-widest uppercase">
+						<a
+							href="/templates/{template.id}"
+							class="btn-secondary px-3 py-1 text-center text-[10px] tracking-widest uppercase"
+						>
 							Open
-						</button>
+						</a>
 					</div>
 				</div>
 			{/each}

@@ -1,8 +1,13 @@
 <script lang="ts">
+	import { db } from '$lib/db';
 	import { workspaceStore } from '$lib/stores/workspace.svelte';
+	import { downloadFile } from '$lib/utils/fileActions';
+	import { exportToJson } from '$lib/utils/json';
 	import {
 		Check,
+		Download,
 		Edit2,
+		FileUp,
 		Folder,
 		GripVertical,
 		History as HistoryIcon,
@@ -13,6 +18,7 @@
 	import { dndzone } from 'svelte-dnd-action';
 	import { flip } from 'svelte/animate';
 	import ConfirmationModal from './ConfirmationModal.svelte';
+	import ImportModal from './ImportModal.svelte';
 
 	let { isSidebarOpen = $bindable(false) } = $props();
 
@@ -65,6 +71,26 @@
 	function startEditing(ws: any) {
 		editingId = ws.id;
 		editingName = ws.name;
+	}
+
+	let showImportModal = $state(false);
+
+	async function handleExport() {
+		if (!workspaceStore.activeId) return;
+
+		const ws = workspaceStore.workspaces.find((w) => w.id === workspaceStore.activeId);
+		if (!ws) return;
+
+		// Fetch all linked data
+		const templates = await db.templates.where('workspaceId').equals(ws.id).toArray();
+		const templateIds = templates.map((t) => t.id);
+		const items = await db.items.where('templateId').anyOf(templateIds).toArray();
+		const records = await db.records.where('templateId').anyOf(templateIds).toArray();
+
+		const toml = exportToJson(ws, templates, items, records);
+		const fileName = `${ws.name.toLowerCase().replace(/\s+/g, '-')}-${new Date().toISOString().split('T')[0]}.json`;
+
+		downloadFile(toml, fileName, 'application/json');
 	}
 </script>
 
@@ -198,6 +224,28 @@
 				<HistoryIcon size={16} />
 				<span>Record History</span>
 			</a>
+
+			<div class="mt-2 space-y-1 border-t border-text-secondary/20 pt-2">
+				<p class="px-2 pb-1 text-[9px] font-bold tracking-widest text-text-secondary/50 uppercase">
+					Data Management
+				</p>
+				<button
+					onclick={handleExport}
+					class="flex w-full items-center gap-2 p-2 text-left text-sm text-text-secondary transition-colors hover:bg-bg-elevated hover:text-accent"
+					title="Export Workspace to JSON"
+				>
+					<Download size={16} />
+					<span>Export Workspace</span>
+				</button>
+				<button
+					onclick={() => (showImportModal = true)}
+					class="flex w-full items-center gap-2 p-2 text-left text-sm text-text-secondary transition-colors hover:bg-bg-elevated hover:text-accent"
+					title="Import Workspace or Templates (JSON)"
+				>
+					<FileUp size={16} />
+					<span>Import Data</span>
+				</button>
+			</div>
 		</div>
 	</div>
 
@@ -216,3 +264,5 @@
 	type="danger"
 	onConfirm={handleDelete}
 />
+
+<ImportModal bind:show={showImportModal} />

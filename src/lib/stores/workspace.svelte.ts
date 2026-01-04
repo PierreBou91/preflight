@@ -1,6 +1,6 @@
 // lib/stores/workspace.svelte.ts
 import { db } from '$lib/db';
-import type { Workspace } from '$lib/types';
+import type { ChecklistItem, PreflightRecord, PreflightTemplate, Workspace } from '$lib/types';
 import { liveQuery } from 'dexie';
 
 class WorkspaceStore {
@@ -80,6 +80,42 @@ class WorkspaceStore {
     await db.transaction('rw', db.workspaces, async () => {
       for (let i = 0; i < orderedIds.length; i++) {
         await db.workspaces.update(orderedIds[i], { order: i });
+      }
+    });
+  }
+
+  async importData(
+    data: { workspace: Workspace; templates: PreflightTemplate[]; items: ChecklistItem[]; records: PreflightRecord[] },
+    mode: 'merge' | 'replace'
+  ) {
+    await db.transaction('rw', [db.workspaces, db.templates, db.items, db.records], async () => {
+      if (mode === 'replace') {
+        // Delete current workspace and its data
+        if (this.activeId) {
+          await this.delete(this.activeId);
+        }
+        // Add new workspace
+        await db.workspaces.add(data.workspace);
+        this.activeId = data.workspace.id;
+      }
+
+      // If merge, we keep current workspace but add imported templates/items/records
+      // We might need to rebasing template workspaceIds if merging into a different one
+      const targetWorkspaceId = mode === 'replace' ? data.workspace.id : this.activeId;
+      
+      if (!targetWorkspaceId) throw new Error('No active workspace for import');
+
+      for (const t of data.templates) {
+        // Add template with linked workspaceId
+        await db.templates.put({ ...t, workspaceId: targetWorkspaceId });
+      }
+
+      for (const item of data.items) {
+        await db.items.put(item);
+      }
+
+      for (const rec of data.records) {
+        await db.records.put({ ...rec, workspaceId: targetWorkspaceId } as any);
       }
     });
   }

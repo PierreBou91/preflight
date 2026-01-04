@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--color-bg-primary: #1e1e2e;
+	--color-bg-secondary: #282a36;
+	--color-bg-elevated: #343746;
+	--color-text-primary: #f8f8f2;
+	--color-text-secondary: #6272a4;
+	--color-accent: #bd93f9;
+	--color-accent-hover: #caa8ff;
+	--color-success: #50fa7b;
+	--color-warning: #ffb86c;
+	--color-error: #ff5555;
+
+	--font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+	--radius-none: 0;
+	--radius-sm: 0;
+	--radius-md: 0;
+	--radius-lg: 0;
+	--radius-xl: 0;
+	--radius-2xl: 0;
+	--radius-3xl: 0;
+	--radius-full: 0;
+}
+
+@layer base {
+	body {
+		@apply bg-bg-primary font-mono text-text-primary;
+		margin: 0;
+		min-height: 100vh;
+	}
+
+	* {
+		border-radius: 0 !important;
+	}
+}
+
+@layer components {
+	.card {
+		@apply border-2 border-text-secondary bg-bg-secondary;
+		box-shadow: 4px 4px 0 theme(colors.accent);
+	}
+
+	.btn-primary {
+		@apply cursor-pointer bg-accent px-4 py-2 font-bold text-bg-primary transition-colors hover:bg-accent-hover;
+		box-shadow: 2px 2px 0 theme(colors.bg-elevated);
+	}
+
+	.btn-secondary {
+		@apply cursor-pointer bg-bg-elevated px-4 py-2 font-bold text-text-primary transition-colors hover:bg-bg-secondary;
+		border: 1px solid theme(colors.text-secondary);
+	}
+}

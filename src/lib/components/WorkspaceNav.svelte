@@ -9,8 +9,10 @@
 		Edit2,
 		FileUp,
 		Folder,
+		Github,
 		GripVertical,
 		History as HistoryIcon,
+		MessageSquare,
 		Plus,
 		Trash2,
 		X
@@ -249,10 +251,30 @@
 		</div>
 	</div>
 
-	<div
-		class="border-t-2 border-text-secondary p-4 text-center text-[10px] tracking-widest text-text-secondary uppercase"
-	>
-		v0.0.1 ALPHA
+	<div class="border-t-2 border-text-secondary bg-bg-primary p-4">
+		<div class="mb-3 text-center text-[10px] tracking-widest text-text-secondary/50 uppercase">
+			v0.0.2 ALPHA
+		</div>
+		<div class="flex flex-col gap-2">
+			<a
+				href="https://github.com/PierreBou91/preflight"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="flex items-center justify-center gap-2 text-[10px] font-bold tracking-widest text-text-secondary uppercase transition-colors hover:text-accent"
+			>
+				<Github size={12} />
+				GitHub
+			</a>
+			<a
+				href="https://github.com/PierreBou91/preflight/issues"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="flex items-center justify-center gap-2 text-[10px] font-black font-bold tracking-widest text-text-secondary uppercase underline decoration-accent/30 underline-offset-4 transition-colors hover:text-accent"
+			>
+				<MessageSquare size={12} />
+				Bug / Feature
+			</a>
+		</div>
 	</div>
 </div>
 

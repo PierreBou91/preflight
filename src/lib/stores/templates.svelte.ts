@@ -54,6 +54,16 @@ class TemplateStore {
   }
 
   async update(id: string, updates: Partial<PreflightTemplate>) {
+    const current = await db.templates.get(id);
+    if (!current) return;
+
+    // Only update if there are actual changes
+    const hasChange = Object.entries(updates).some(([key, value]) => {
+      return (current as any)[key] !== value;
+    });
+
+    if (!hasChange) return;
+
     await db.templates.update(id, {
       ...updates,
       updatedAt: Date.now()

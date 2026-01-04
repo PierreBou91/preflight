@@ -10,13 +10,34 @@
 
 	let template = $derived(templateStore.templates.find((t) => t.id === templateId));
 
-	// Auto-save template changes with basic debouncing/tracking
+	// Local editable state to prevent race conditions/flickering
+	let localName = $state('');
+	let localPilot = $state('');
+	let localDesc = $state('');
+	let lastLoadedId = $state<string | null>(null);
+
+	// Sync FROM store TO local state only on load/switch
 	$effect(() => {
-		if (template) {
-			// Trigger on property changes
-			const { name, pilot, description } = template;
-			templateStore.update(template.id, { name, pilot, description });
+		if (template && template.id !== lastLoadedId) {
+			localName = template.name;
+			localPilot = template.pilot;
+			localDesc = template.description;
+			lastLoadedId = template.id;
 		}
+	});
+
+	// Debounced save FROM local state TO store
+	$effect(() => {
+		if (!template) return;
+
+		// Track changes
+		const data = { name: localName, pilot: localPilot, description: localDesc };
+
+		const timer = setTimeout(() => {
+			templateStore.update(template.id, data);
+		}, 800); // 800ms debounce for mobile/performance
+
+		return () => clearTimeout(timer);
 	});
 
 	// Initialize itemStore for this template
@@ -48,7 +69,7 @@
 				<div class="flex flex-col">
 					<input
 						type="text"
-						bind:value={template.name}
+						bind:value={localName}
 						class="w-full max-w-lg border-b-2 border-transparent bg-transparent text-2xl font-black tracking-tighter text-text-primary uppercase transition-all outline-none focus:border-accent focus:text-accent"
 						placeholder="Untitled Template"
 					/>
@@ -84,7 +105,7 @@
 					<input
 						id="tmpl-pilot"
 						type="text"
-						bind:value={template.pilot}
+						bind:value={localPilot}
 						class="w-full border border-text-secondary/30 bg-bg-primary p-2 text-sm outline-none focus:border-accent"
 					/>
 				</div>
@@ -97,7 +118,7 @@
 					<input
 						id="tmpl-desc"
 						type="text"
-						bind:value={template.description}
+						bind:value={localDesc}
 						class="w-full border border-text-secondary/30 bg-bg-primary p-2 text-sm outline-none focus:border-accent"
 					/>
 				</div>

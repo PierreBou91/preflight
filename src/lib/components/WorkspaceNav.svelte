@@ -6,13 +6,13 @@
 	import {
 		Check,
 		Download,
-		Edit2,
 		FileUp,
 		Folder,
 		Github,
 		GripVertical,
 		History as HistoryIcon,
 		MessageSquare,
+		Pen,
 		Plus,
 		Trash2,
 		X
@@ -32,6 +32,12 @@
 	// Modal state
 	let showDeleteModal = $state(false);
 	let workspaceToDelete = $state<{ id: string; name: string } | null>(null);
+	let showClearModal = $state(false);
+
+	async function handleClearAll() {
+		await db.delete();
+		window.location.reload();
+	}
 
 	async function handleAdd() {
 		if (!newWorkspaceName.trim()) return;
@@ -176,7 +182,7 @@
 							class="p-1 text-text-secondary hover:text-accent"
 							title="Edit"
 						>
-							<Edit2 size={12} />
+							<Pen size={12} />
 						</button>
 						<button
 							onclick={() => confirmDelete(ws.id, ws.name)}
@@ -247,6 +253,15 @@
 					<FileUp size={16} />
 					<span>Import Data</span>
 				</button>
+
+				<button
+					onclick={() => (showClearModal = true)}
+					class="flex w-full items-center gap-2 p-2 text-left text-sm text-text-secondary transition-colors hover:bg-bg-elevated hover:text-error"
+					title="Permanently clear all data"
+				>
+					<Trash2 size={16} />
+					<span>Clear All Data</span>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -288,3 +303,12 @@
 />
 
 <ImportModal bind:show={showImportModal} />
+
+<ConfirmationModal
+	bind:show={showClearModal}
+	title="Clear All Data?"
+	message="This will permanently delete ALL workspaces, templates, and records. This action cannot be undone."
+	confirmText="Clear Everything"
+	type="danger"
+	onConfirm={handleClearAll}
+/>

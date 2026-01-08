@@ -12,6 +12,15 @@
 		workspaceStore.workspaces.find((w) => w.id === workspaceStore.activeId)
 	);
 
+	let searchQuery = $state('');
+	let filteredTemplates = $derived(
+		templateStore.templates.filter(
+			(t) =>
+				t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				t.description.toLowerCase().includes(searchQuery.toLowerCase())
+		)
+	);
+
 	let isCreating = $state(false);
 
 	async function handleCreateTemplate() {
@@ -67,11 +76,30 @@
 				</h2>
 				<p class="text-sm text-text-secondary italic">Workspace Dashboard</p>
 			</div>
-			<button onclick={handleCreateTemplate} class="btn-primary flex items-center gap-2">
-				<Plus size={18} />
-				New Template
-			</button>
+			<div class="flex items-center gap-4">
+				<div class="relative hidden md:block">
+					<input
+						type="text"
+						bind:value={searchQuery}
+						placeholder="Filter templates..."
+						class="w-64 border-b-2 border-text-secondary bg-transparent py-1 text-sm outline-none focus:border-accent"
+					/>
+				</div>
+				<button onclick={handleCreateTemplate} class="btn-primary flex items-center gap-2">
+					<Plus size={18} />
+					New Template
+				</button>
+			</div>
 		</header>
+
+		<div class="md:hidden">
+			<input
+				type="text"
+				bind:value={searchQuery}
+				placeholder="Filter templates..."
+				class="w-full border-b-2 border-text-secondary bg-transparent py-2 text-sm outline-none focus:border-accent"
+			/>
+		</div>
 
 		{#if isCreating}
 			<div class="flex h-64 animate-pulse flex-col items-center justify-center space-y-4">
@@ -80,7 +108,7 @@
 			</div>
 		{:else}
 			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{#each templateStore.templates as template}
+				{#each filteredTemplates as template}
 					<div class="card group flex flex-col justify-between p-6">
 						<div>
 							<div class="mb-2 flex items-start justify-between">

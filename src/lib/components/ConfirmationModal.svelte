@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AlertTriangle, Trash2 } from 'lucide-svelte';
+	import { Trash2, TriangleAlert } from 'lucide-svelte';
 
 	let {
 		show = $bindable(false),
@@ -40,7 +40,7 @@
 					{#if type === 'danger'}
 						<Trash2 size={24} />
 					{:else}
-						<AlertTriangle size={24} />
+						<TriangleAlert size={24} />
 					{/if}
 				</div>
 				<h3 class="text-xl font-black tracking-tight text-text-primary uppercase">

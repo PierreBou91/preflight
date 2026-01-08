@@ -12,15 +12,11 @@
 			.sort((a, b) => a.order - b.order);
 	}
 
-	let rootItems = $derived(getChildren(depth === 0 ? null : items[0]?.parentId || null));
+	let rootItems = $derived(getChildren(null));
 </script>
 
 <div class="space-y-1">
 	{#each rootItems as item (item.id)}
-		<RunItem {item} items={allItems} {depth} {readonly} />
-		{@const children = getChildren(item.id)}
-		{#if children.length > 0}
-			<svelte:self items={children} {allItems} depth={depth + 1} {readonly} />
-		{/if}
+		<RunItem {item} items={allItems} depth={0} {readonly} />
 	{/each}
 </div>

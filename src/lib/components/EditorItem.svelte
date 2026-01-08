@@ -26,6 +26,7 @@
 	style="margin-left: {depth * 20}px"
 >
 	<div
+		onmousedown={handleBlur}
 		class="cursor-grab p-1 text-text-secondary/30 hover:text-text-secondary active:cursor-grabbing"
 	>
 		<GripVertical size={16} />
@@ -37,6 +38,7 @@
 				bind:value={text}
 				onblur={handleBlur}
 				onkeydown={handleKeydown}
+				onfocus={(e) => e.currentTarget.select()}
 				class="flex-1 border border-accent bg-bg-primary p-1 text-sm outline-none"
 				autofocus
 			/>
@@ -50,7 +52,9 @@
 		{/if}
 	</div>
 
-	<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100">
+	<div
+		class="flex items-center gap-1 opacity-100 transition-opacity lg:opacity-0 lg:group-hover:opacity-100"
+	>
 		<button
 			onclick={() => itemStore.add('', item.id)}
 			class="p-1 text-text-secondary hover:text-accent"

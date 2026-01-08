@@ -70,6 +70,7 @@
 					<input
 						type="text"
 						bind:value={localName}
+						onfocus={(e) => e.currentTarget.select()}
 						class="w-full max-w-lg border-b-2 border-transparent bg-transparent text-2xl font-black tracking-tighter text-text-primary uppercase transition-all outline-none focus:border-accent focus:text-accent"
 						placeholder="Untitled Template"
 					/>
@@ -94,7 +95,7 @@
 			</div>
 		</header>
 
-		<div class="card space-y-4 p-6">
+		<div class="card space-y-4 p-4 md:p-6">
 			<div class="grid grid-cols-1 gap-4 border-b border-text-secondary/20 pb-4 md:grid-cols-2">
 				<div>
 					<label
@@ -106,6 +107,7 @@
 						id="tmpl-pilot"
 						type="text"
 						bind:value={localPilot}
+						onfocus={(e) => e.currentTarget.select()}
 						class="w-full border border-text-secondary/30 bg-bg-primary p-2 text-sm outline-none focus:border-accent"
 					/>
 				</div>

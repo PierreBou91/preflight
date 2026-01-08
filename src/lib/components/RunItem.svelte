@@ -1,15 +1,39 @@
 <script lang="ts">
 	import { recordStore } from '$lib/stores/records.svelte';
+	import type { ChecklistItem } from '$lib/types';
 	import { getIndeterminateState } from '$lib/utils/checkboxTree';
-	import { Check } from 'lucide-svelte';
+	import { Check, ChevronRight } from 'lucide-svelte';
 
-	let { item, items, depth = 0, readonly = false } = $props();
+	let {
+		item,
+		items,
+		depth = 0,
+		readonly = false
+	}: {
+		item: ChecklistItem;
+		items: Record<string, ChecklistItem>;
+		depth?: number;
+		readonly?: boolean;
+	} = $props();
 
 	let checkboxRef: HTMLInputElement | null = $state(null);
+	let isCollapsed = $state(false);
+
+	let children = $derived(
+		Object.values(items)
+			.filter((i: ChecklistItem) => i.parentId === item.id)
+			.sort((a: ChecklistItem, b: ChecklistItem) => a.order - b.order)
+	);
 
 	$effect(() => {
 		if (checkboxRef) {
 			checkboxRef.indeterminate = getIndeterminateState(item.id, items);
+		}
+	});
+
+	$effect(() => {
+		if (item.checked) {
+			isCollapsed = true;
 		}
 	});
 </script>
@@ -20,6 +44,17 @@
 		: 'border-text-secondary/20 hover:bg-bg-elevated/50'}"
 	style="margin-left: {depth * 20}px"
 >
+	{#if children.length > 0}
+		<button
+			onclick={() => (isCollapsed = !isCollapsed)}
+			class="text-text-secondary/50 transition-colors hover:text-accent"
+		>
+			<ChevronRight size={16} class="transition-transform {isCollapsed ? '' : 'rotate-90'}" />
+		</button>
+	{:else}
+		<div class="w-4"></div>
+	{/if}
+
 	<div class="relative flex items-center">
 		<input
 			type="checkbox"
@@ -55,3 +90,11 @@
 		{/if}
 	</div>
 </div>
+
+{#if children.length > 0 && !isCollapsed}
+	<div class="space-y-1">
+		{#each children as child (child.id)}
+			<svelte:self item={child} {items} depth={depth + 1} {readonly} />
+		{/each}
+	</div>
+{/if}

@@ -26,7 +26,9 @@
 		<div animate:flip={{ duration: 200 }}>
 			<EditorItem {item} {depth} />
 			{#if item.children && item.children.length > 0}
-				<svelte:self items={item.children} depth={depth + 1} parentId={item.id} />
+				<div class="mt-1">
+					<svelte:self items={item.children} depth={depth + 1} parentId={item.id} />
+				</div>
 			{/if}
 		</div>
 	{/each}

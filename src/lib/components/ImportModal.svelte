@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { workspaceStore } from '$lib/stores/workspace.svelte';
 	import { importFromJson } from '$lib/utils/json';
-	import { AlertCircle, CheckCircle2, FileUp } from 'lucide-svelte';
+	import { CircleAlert, CircleCheck, FileUp } from 'lucide-svelte';
 
 	let { show = $bindable(false) } = $props();
 
@@ -68,7 +68,7 @@
 				<div
 					class="animate-in fade-in slide-in-from-top-2 flex items-start gap-3 border-2 border-error bg-error/10 p-4 text-error"
 				>
-					<AlertCircle size={18} class="mt-0.5 shrink-0" />
+					<CircleAlert size={18} class="mt-0.5 shrink-0" />
 					<p class="font-mono text-xs leading-relaxed">{error}</p>
 				</div>
 			{/if}
@@ -77,7 +77,7 @@
 				<div
 					class="animate-in fade-in slide-in-from-top-2 flex items-start gap-3 border-2 border-success bg-success/10 p-4 text-success"
 				>
-					<CheckCircle2 size={18} class="mt-0.5 shrink-0" />
+					<CircleCheck size={18} class="mt-0.5 shrink-0" />
 					<p class="font-mono text-xs leading-relaxed">{success}</p>
 				</div>
 			{/if}

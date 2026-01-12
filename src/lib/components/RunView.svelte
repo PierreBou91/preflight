@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { recordStore } from '$lib/stores/records.svelte';
-	import { ArrowLeft, CheckCircle, User } from 'lucide-svelte';
+	import { ArrowLeft, CircleCheck, User } from 'lucide-svelte';
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import RunTimer from './RunTimer.svelte';
 	import RunTree from './RunTree.svelte';
@@ -62,7 +62,7 @@
 						</div>
 						{#if isComplete}
 							<span class="non-italic flex items-center gap-1 font-bold text-success">
-								<CheckCircle size={14} />
+								<CircleCheck size={14} />
 								COMPLETE
 							</span>
 						{/if}
@@ -102,8 +102,8 @@
 					onclick={() => (showFinishModal = true)}
 					class="btn-primary flex w-full animate-bounce items-center justify-center gap-3 py-4 text-lg font-black tracking-widest uppercase"
 				>
-					<CheckCircle size={24} />
-					Finish Checklist
+					<CircleCheck size={24} />
+					Finish Run
 				</button>
 			{/if}
 		</div>
@@ -111,8 +111,8 @@
 
 	<ConfirmationModal
 		bind:show={showFinishModal}
-		title="Finish Checklist?"
-		message="Are you sure you want to finish this checklist run? The completion time will be recorded."
+		title="Finish Run?"
+		message="Are you sure you want to finish this run? The completion time will be recorded."
 		confirmText="Finish"
 		type="success"
 		onConfirm={handleFinish}

@@ -35,6 +35,9 @@
 	let showClearModal = $state(false);
 
 	async function handleClearAll() {
+		if (typeof sessionStorage !== 'undefined') {
+			sessionStorage.removeItem('preflight.demoMode');
+		}
 		await db.delete();
 		window.location.reload();
 	}
@@ -268,7 +271,7 @@
 
 	<div class="border-t-2 border-text-secondary bg-bg-primary p-4">
 		<div class="mb-3 text-center text-[10px] tracking-widest text-text-secondary/50 uppercase">
-			v0.0.2 ALPHA
+			v0.0.4 ALPHA
 		</div>
 		<div class="flex flex-col gap-2">
 			<a

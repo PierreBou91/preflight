@@ -1,0 +1,1644 @@
+{
+  "preflight": {
+    "version": "1.0",
+    "exportedAt": "2026-01-23T15:00:43.373Z"
+  },
+  "workspace": {
+    "id": "56e35450-5a96-4279-af11-1ec46c8d1b6f",
+    "name": "Notaire-extract",
+    "order": 0,
+    "createdAt": 1767543943072,
+    "updatedAt": 1767543943072
+  },
+  "templates": [
+    {
+      "id": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "workspaceId": "56e35450-5a96-4279-af11-1ec46c8d1b6f",
+      "name": "Deploy prod",
+      "order": 0,
+      "pilot": "Pierre",
+      "description": "Deploy to prod checklist",
+      "createdAt": 1767543945141,
+      "updatedAt": 1767797159661,
+      "itemIds": []
+    }
+  ],
+  "items": [
+    {
+      "id": "024a5dba-6a3a-4906-ad2b-2980b55f244a",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+      "text": "User CAN modify info",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "07458596-4f6b-409f-8b72-4468bdedbe16",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+      "text": "User CAN create an Étude",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+      "text": "Login",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "1104958f-2f94-4f3d-81fb-0f72ad3b58bd",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+      "text": "User CANNOT delete a promoteur if a programme is attached",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": null,
+      "text": "Frontend",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "12d3384a-eeb2-4863-9fb9-45585a4622df",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+      "text": "NO ERROR on activity tab",
+      "checked": false,
+      "order": 4
+    },
+    {
+      "id": "19d5a4e3-30a1-44d7-8aac-0e115ad91797",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+      "text": "User with SUFFICIENT rights is GIVEN access",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+      "text": "Member tab",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "1cd1159c-33fc-4ec9-9e8d-49ae22ae368e",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "text": "User CAN modify a programme - NOT IMPLEMENTED",
+      "checked": false,
+      "order": 5
+    },
+    {
+      "id": "1f102820-1298-4781-96f4-f2d3478c1fd0",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "text": "User CANNOT remove a promoteur if there is a programme",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "20963c8c-b689-496f-9f96-1c4637097d04",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": null,
+      "text": "Back office",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "21978450-815e-42d5-9137-19a5bceb1c6b",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+      "text": "User CAN delete an Étude",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "33a61c15-7279-43b9-a04b-0d8a5cc905e4",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+      "text": "User with NO account is DENIED access",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "3596976a-01c6-4ec9-b366-707ef620829a",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+      "text": "User CAN see PDF",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "3b5efd20-8322-4269-9256-7fe986c792dd",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": null,
+      "text": "ENVARS to add/modify",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "3caec97c-7f72-4a81-a6b2-1e373181695a",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+      "text": "User CAN modify an Étude",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "3ea1c7a9-fb7a-46de-a84e-ffb6bd3485c1",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+      "text": "User CAN add member",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "452ad26c-926b-4ebd-8ec3-5f1fee40e7fc",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+      "text": "User with NO account is DENIED access",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+      "text": "Promoteur tab",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+      "text": "Document details",
+      "checked": false,
+      "order": 5
+    },
+    {
+      "id": "4799ad47-e598-4419-8ae6-b61eb720695b",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+      "text": "User CAN submit new document",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "5efa2765-41cd-4c35-869a-10e6bb73bf69",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "694064fe-20e1-40df-b755-86b221f15159",
+      "text": "Programme",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "63bb8f2e-9e08-42ff-982a-540d7f19b97d",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+      "text": "User CAN modify team members",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "665c5698-ce65-48d7-a317-74b3db843cea",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+      "text": "NO ERROR on AI Efficiency panel loads with",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "694064fe-20e1-40df-b755-86b221f15159",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+      "text": "Admin - Promoteur",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "7064c958-86d9-4765-8852-0fc82da6ef2d",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "text": "User CAN delete a programme - NOT IMPLEMENTED",
+      "checked": false,
+      "order": 6
+    },
+    {
+      "id": "72830277-5604-490d-bbec-aae8583e6e2f",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+      "text": "Logs are accurate",
+      "checked": false,
+      "order": 4
+    },
+    {
+      "id": "72a624c4-c303-4d64-a443-6e88c593a423",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+      "text": "User CAN see extracted information",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+      "text": "Spécific Étude page",
+      "checked": false,
+      "order": 5
+    },
+    {
+      "id": "7528529a-f779-40f6-a4f7-349fab8321a0",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+      "text": "User CAN access documents from étude",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "753937c7-022a-4a79-b0f1-40b46651da55",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+      "text": "User CAN remove member",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "75cfba30-254d-443b-bf8e-f5bb545ccb3e",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+      "text": "User with MULTIPLE études can pick which one they want to proceed with",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "78c7f38c-74e8-4dce-9420-ef91de600ee6",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": null,
+      "text": "N8N mail flow SUCCESSFUL",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "7be05b8f-b4ea-4674-abc7-7ba6e539a2e0",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "text": "User CAN add a promoteur",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "7d744afe-44b3-4c26-9bb0-3c8e35fb21bc",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "text": "User CAN remove a promoteur if there is no programme",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+      "text": "Études",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "8e15d4ca-965d-4c3f-9b75-6d9a8dca5c1f",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+      "text": "NO ERROR on documents page",
+      "checked": false,
+      "order": 3
+    },
+    {
+      "id": "8f321667-f4f6-4332-b218-06f09d46bee9",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+      "text": "NO ERROR on overview tab",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "96a7c2ce-94c4-43f1-9883-24a9856f108f",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+      "text": "User CAN navigate to a specific Étude page",
+      "checked": false,
+      "order": 4
+    },
+    {
+      "id": "979d1d59-64e5-474f-a771-033730b8ba6f",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+      "text": "User with INSUFFICIENT rights is DENIED access || test1@notaire.fr 57Q8,EPs",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "9ace0f75-86cc-4ede-9f0f-613d566b1578",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+      "text": "User CAN remove team member",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "9c03bf3c-79e3-46c1-aaac-e0e4dff2b18f",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+      "text": "User CAN log out",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "a5b99910-3078-40ef-9b0c-98925f8600a7",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": null,
+      "text": "Database rebuild if applicable",
+      "checked": false,
+      "order": 4
+    },
+    {
+      "id": "a69e80fa-f771-4e14-9466-e5f82e5e8764",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+      "text": "NO ERROR System panel loads with",
+      "checked": false,
+      "order": 4
+    },
+    {
+      "id": "a89dd784-8f2f-4776-9444-288670ff3a49",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+      "text": "Login",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "b461a672-a332-4d35-9905-b7f1d043807d",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+      "text": "User CAN log out",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "b9219e43-d6db-4edf-b7ca-c53cb7b515d0",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+      "text": "User CAN modify a promoteur",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "b9b715c3-d1d6-4718-90d1-abfc2293d488",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "text": "User CAN add a programme to a promoteur",
+      "checked": false,
+      "order": 4
+    },
+    {
+      "id": "c7c05ff4-6d42-4002-8a1b-ee22c2abb308",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+      "text": "User CAN add a promoteur",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+      "text": "Dashboard",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "ccfda589-8749-4ab0-9814-c8d047d8b583",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+      "text": "User CAN delete a promoteur if 0 programme is attached",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "d27975c1-5d41-446e-a527-5b5915485593",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+      "text": "Dashboard",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "d7f9c029-d8d8-4ee7-ba05-2133e9c6465d",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+      "text": "NO ERROR when fetching études",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "e710d1b2-9beb-4467-8c0f-b959ffe7821f",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+      "text": "User CAN add team members || TODO: Distinction new email/existing email",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "e736bc66-40c4-4a60-a237-a9e9105e1f5f",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+      "text": "User CAN modify a promoteur - NOT IMPLEMENTED",
+      "checked": false,
+      "order": 1
+    },
+    {
+      "id": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "694064fe-20e1-40df-b755-86b221f15159",
+      "text": "Promoteur",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "f2e2d57a-58f4-49de-bd77-8dccf199501b",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+      "text": "User with NO étude is warned that they need an étude to proceed",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "f39962dd-0572-4fb6-a33b-7d426d01124a",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+      "text": "Dashboard is corrrectly displayed",
+      "checked": false,
+      "order": 0
+    },
+    {
+      "id": "f7e8755a-a692-4ca0-9e3f-16d3aa76cf88",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+      "text": "User CAN validate extracted info",
+      "checked": false,
+      "order": 2
+    },
+    {
+      "id": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+      "text": "Admin - Gestion",
+      "checked": false,
+      "order": 4
+    },
+    {
+      "id": "fc59e6a5-898b-4229-b60f-27728333bba9",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+      "text": "User WITH an account is GIVEN access",
+      "checked": false,
+      "order": 1
+    }
+  ],
+  "records": [
+    {
+      "id": "bddde1f9-4a36-45be-bca1-1e7d4b95e20d",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "name": "Deploy prod - 07/01/2026, 16:27:39",
+      "pilot": "Pierre",
+      "createdAt": 1767799659373,
+      "elapsedMs": 0,
+      "isPaused": false,
+      "resumedAt": 1767799659373,
+      "items": {
+        "024a5dba-6a3a-4906-ad2b-2980b55f244a": {
+          "id": "024a5dba-6a3a-4906-ad2b-2980b55f244a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN modify info",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799684475
+        },
+        "07458596-4f6b-409f-8b72-4468bdedbe16": {
+          "id": "07458596-4f6b-409f-8b72-4468bdedbe16",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN create an Étude",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799672559
+        },
+        "095a0fb5-f4f7-4ff3-baf8-856da182046d": {
+          "id": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "Login",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799667910
+        },
+        "1104958f-2f94-4f3d-81fb-0f72ad3b58bd": {
+          "id": "1104958f-2f94-4f3d-81fb-0f72ad3b58bd",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CANNOT delete a promoteur if a programme is attached",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799684475
+        },
+        "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6": {
+          "id": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "Frontend",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799684475
+        },
+        "12d3384a-eeb2-4863-9fb9-45585a4622df": {
+          "id": "12d3384a-eeb2-4863-9fb9-45585a4622df",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "NO ERROR on activity tab",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1767799678189
+        },
+        "19d5a4e3-30a1-44d7-8aac-0e115ad91797": {
+          "id": "19d5a4e3-30a1-44d7-8aac-0e115ad91797",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "text": "User with SUFFICIENT rights is GIVEN access",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799667910
+        },
+        "1cc8688f-1de3-4854-83b9-9b344b1ff269": {
+          "id": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "Member tab",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799678189
+        },
+        "1cd1159c-33fc-4ec9-9e8d-49ae22ae368e": {
+          "id": "1cd1159c-33fc-4ec9-9e8d-49ae22ae368e",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN modify a programme - NOT IMPLEMENTED",
+          "checked": true,
+          "order": 5,
+          "completedAt": 1767799678189
+        },
+        "1f102820-1298-4781-96f4-f2d3478c1fd0": {
+          "id": "1f102820-1298-4781-96f4-f2d3478c1fd0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CANNOT remove a promoteur if there is a programme",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799678189
+        },
+        "20963c8c-b689-496f-9f96-1c4637097d04": {
+          "id": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "Back office",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799683593
+        },
+        "21978450-815e-42d5-9137-19a5bceb1c6b": {
+          "id": "21978450-815e-42d5-9137-19a5bceb1c6b",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN delete an Étude",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799673792
+        },
+        "33a61c15-7279-43b9-a04b-0d8a5cc905e4": {
+          "id": "33a61c15-7279-43b9-a04b-0d8a5cc905e4",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User with NO account is DENIED access",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799684475
+        },
+        "3596976a-01c6-4ec9-b366-707ef620829a": {
+          "id": "3596976a-01c6-4ec9-b366-707ef620829a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN see PDF",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799684475
+        },
+        "3b5efd20-8322-4269-9256-7fe986c792dd": {
+          "id": "3b5efd20-8322-4269-9256-7fe986c792dd",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "ENVARS to add/modify",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799687776
+        },
+        "3caec97c-7f72-4a81-a6b2-1e373181695a": {
+          "id": "3caec97c-7f72-4a81-a6b2-1e373181695a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN modify an Étude",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799673075
+        },
+        "3ea1c7a9-fb7a-46de-a84e-ffb6bd3485c1": {
+          "id": "3ea1c7a9-fb7a-46de-a84e-ffb6bd3485c1",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+          "text": "User CAN add member",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799678189
+        },
+        "452ad26c-926b-4ebd-8ec3-5f1fee40e7fc": {
+          "id": "452ad26c-926b-4ebd-8ec3-5f1fee40e7fc",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "text": "User with NO account is DENIED access",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799664542
+        },
+        "46961441-1eeb-4b69-adef-4e7a5cab45e5": {
+          "id": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "Promoteur tab",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799678189
+        },
+        "46b208cd-1f72-421e-96d1-e87fa2f6ea39": {
+          "id": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Document details",
+          "checked": true,
+          "order": 5,
+          "completedAt": 1767799684475
+        },
+        "4799ad47-e598-4419-8ae6-b61eb720695b": {
+          "id": "4799ad47-e598-4419-8ae6-b61eb720695b",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+          "text": "User CAN submit new document",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799684475
+        },
+        "5efa2765-41cd-4c35-869a-10e6bb73bf69": {
+          "id": "5efa2765-41cd-4c35-869a-10e6bb73bf69",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "694064fe-20e1-40df-b755-86b221f15159",
+          "text": "Programme",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799684475
+        },
+        "63bb8f2e-9e08-42ff-982a-540d7f19b97d": {
+          "id": "63bb8f2e-9e08-42ff-982a-540d7f19b97d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "text": "User CAN modify team members",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799684475
+        },
+        "665c5698-ce65-48d7-a317-74b3db843cea": {
+          "id": "665c5698-ce65-48d7-a317-74b3db843cea",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "NO ERROR on AI Efficiency panel loads with",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799682443
+        },
+        "694064fe-20e1-40df-b755-86b221f15159": {
+          "id": "694064fe-20e1-40df-b755-86b221f15159",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Admin - Promoteur",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799684475
+        },
+        "7064c958-86d9-4765-8852-0fc82da6ef2d": {
+          "id": "7064c958-86d9-4765-8852-0fc82da6ef2d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN delete a programme - NOT IMPLEMENTED",
+          "checked": true,
+          "order": 6,
+          "completedAt": 1767799678189
+        },
+        "72830277-5604-490d-bbec-aae8583e6e2f": {
+          "id": "72830277-5604-490d-bbec-aae8583e6e2f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "Logs are accurate",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1767799684475
+        },
+        "72a624c4-c303-4d64-a443-6e88c593a423": {
+          "id": "72a624c4-c303-4d64-a443-6e88c593a423",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN see extracted information",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799684475
+        },
+        "74eb3e61-243b-4e95-bf2b-79eae66e3e5d": {
+          "id": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "Spécific Étude page",
+          "checked": true,
+          "order": 5,
+          "completedAt": 1767799678189
+        },
+        "7528529a-f779-40f6-a4f7-349fab8321a0": {
+          "id": "7528529a-f779-40f6-a4f7-349fab8321a0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+          "text": "User CAN access documents from étude",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799684475
+        },
+        "753937c7-022a-4a79-b0f1-40b46651da55": {
+          "id": "753937c7-022a-4a79-b0f1-40b46651da55",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+          "text": "User CAN remove member",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799678189
+        },
+        "75cfba30-254d-443b-bf8e-f5bb545ccb3e": {
+          "id": "75cfba30-254d-443b-bf8e-f5bb545ccb3e",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User with MULTIPLE études can pick which one they want to proceed with",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799684475
+        },
+        "78c7f38c-74e8-4dce-9420-ef91de600ee6": {
+          "id": "78c7f38c-74e8-4dce-9420-ef91de600ee6",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "N8N mail flow SUCCESSFUL",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799687125
+        },
+        "7be05b8f-b4ea-4674-abc7-7ba6e539a2e0": {
+          "id": "7be05b8f-b4ea-4674-abc7-7ba6e539a2e0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN add a promoteur",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799678189
+        },
+        "7d744afe-44b3-4c26-9bb0-3c8e35fb21bc": {
+          "id": "7d744afe-44b3-4c26-9bb0-3c8e35fb21bc",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN remove a promoteur if there is no programme",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799678189
+        },
+        "8ab2c38a-a75d-4341-9039-5bbc339c151a": {
+          "id": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "Études",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799678189
+        },
+        "8e15d4ca-965d-4c3f-9b75-6d9a8dca5c1f": {
+          "id": "8e15d4ca-965d-4c3f-9b75-6d9a8dca5c1f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "NO ERROR on documents page",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1767799678189
+        },
+        "8f321667-f4f6-4332-b218-06f09d46bee9": {
+          "id": "8f321667-f4f6-4332-b218-06f09d46bee9",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "NO ERROR on overview tab",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799678189
+        },
+        "96a7c2ce-94c4-43f1-9883-24a9856f108f": {
+          "id": "96a7c2ce-94c4-43f1-9883-24a9856f108f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN navigate to a specific Étude page",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1767799674475
+        },
+        "979d1d59-64e5-474f-a771-033730b8ba6f": {
+          "id": "979d1d59-64e5-474f-a771-033730b8ba6f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "text": "User with INSUFFICIENT rights is DENIED access || test1@notaire.fr 57Q8,EPs",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799666442
+        },
+        "9ace0f75-86cc-4ede-9f0f-613d566b1578": {
+          "id": "9ace0f75-86cc-4ede-9f0f-613d566b1578",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "text": "User CAN remove team member",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799684475
+        },
+        "9c03bf3c-79e3-46c1-aaac-e0e4dff2b18f": {
+          "id": "9c03bf3c-79e3-46c1-aaac-e0e4dff2b18f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+          "text": "User CAN log out",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799684475
+        },
+        "a5b99910-3078-40ef-9b0c-98925f8600a7": {
+          "id": "a5b99910-3078-40ef-9b0c-98925f8600a7",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "Database rebuild if applicable",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1767799688392
+        },
+        "a69e80fa-f771-4e14-9466-e5f82e5e8764": {
+          "id": "a69e80fa-f771-4e14-9466-e5f82e5e8764",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "NO ERROR System panel loads with",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1767799683593
+        },
+        "a89dd784-8f2f-4776-9444-288670ff3a49": {
+          "id": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Login",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799684475
+        },
+        "b461a672-a332-4d35-9905-b7f1d043807d": {
+          "id": "b461a672-a332-4d35-9905-b7f1d043807d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+          "text": "User CAN log out",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799670208
+        },
+        "b9219e43-d6db-4edf-b7ca-c53cb7b515d0": {
+          "id": "b9219e43-d6db-4edf-b7ca-c53cb7b515d0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CAN modify a promoteur",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799684475
+        },
+        "b9b715c3-d1d6-4718-90d1-abfc2293d488": {
+          "id": "b9b715c3-d1d6-4718-90d1-abfc2293d488",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN add a programme to a promoteur",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1767799678189
+        },
+        "c7c05ff4-6d42-4002-8a1b-ee22c2abb308": {
+          "id": "c7c05ff4-6d42-4002-8a1b-ee22c2abb308",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CAN add a promoteur",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799684475
+        },
+        "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01": {
+          "id": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "Dashboard",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799670208
+        },
+        "ccfda589-8749-4ab0-9814-c8d047d8b583": {
+          "id": "ccfda589-8749-4ab0-9814-c8d047d8b583",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CAN delete a promoteur if 0 programme is attached",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799684475
+        },
+        "d27975c1-5d41-446e-a527-5b5915485593": {
+          "id": "d27975c1-5d41-446e-a527-5b5915485593",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Dashboard",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799684475
+        },
+        "d7f9c029-d8d8-4ee7-ba05-2133e9c6465d": {
+          "id": "d7f9c029-d8d8-4ee7-ba05-2133e9c6465d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "NO ERROR when fetching études",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799671809
+        },
+        "e710d1b2-9beb-4467-8c0f-b959ffe7821f": {
+          "id": "e710d1b2-9beb-4467-8c0f-b959ffe7821f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "text": "User CAN add team members || TODO: Distinction new email/existing email",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799684475
+        },
+        "e736bc66-40c4-4a60-a237-a9e9105e1f5f": {
+          "id": "e736bc66-40c4-4a60-a237-a9e9105e1f5f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN modify a promoteur - NOT IMPLEMENTED",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799678189
+        },
+        "ef57739b-787c-4c60-84bf-d14bdb6e22af": {
+          "id": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "694064fe-20e1-40df-b755-86b221f15159",
+          "text": "Promoteur",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799684475
+        },
+        "f2e2d57a-58f4-49de-bd77-8dccf199501b": {
+          "id": "f2e2d57a-58f4-49de-bd77-8dccf199501b",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User with NO étude is warned that they need an étude to proceed",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799684475
+        },
+        "f39962dd-0572-4fb6-a33b-7d426d01124a": {
+          "id": "f39962dd-0572-4fb6-a33b-7d426d01124a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+          "text": "Dashboard is corrrectly displayed",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1767799669608
+        },
+        "f7e8755a-a692-4ca0-9e3f-16d3aa76cf88": {
+          "id": "f7e8755a-a692-4ca0-9e3f-16d3aa76cf88",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN validate extracted info",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1767799684475
+        },
+        "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e": {
+          "id": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Admin - Gestion",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1767799684475
+        },
+        "fc59e6a5-898b-4229-b60f-27728333bba9": {
+          "id": "fc59e6a5-898b-4229-b60f-27728333bba9",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User WITH an account is GIVEN access",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1767799684475
+        }
+      },
+      "updatedAt": 1767799688392,
+      "completedAt": 1767799688392
+    },
+    {
+      "id": "d166281b-aa78-4917-9c75-7b254bf225af",
+      "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+      "name": "Deploy prod - 13/01/2026, 12:50:18",
+      "pilot": "Pierre",
+      "createdAt": 1768305018227,
+      "elapsedMs": 0,
+      "isPaused": false,
+      "resumedAt": 1768305018227,
+      "items": {
+        "024a5dba-6a3a-4906-ad2b-2980b55f244a": {
+          "id": "024a5dba-6a3a-4906-ad2b-2980b55f244a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN modify info",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305046830
+        },
+        "07458596-4f6b-409f-8b72-4468bdedbe16": {
+          "id": "07458596-4f6b-409f-8b72-4468bdedbe16",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN create an Étude",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305027891
+        },
+        "095a0fb5-f4f7-4ff3-baf8-856da182046d": {
+          "id": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "Login",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305024082
+        },
+        "1104958f-2f94-4f3d-81fb-0f72ad3b58bd": {
+          "id": "1104958f-2f94-4f3d-81fb-0f72ad3b58bd",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CANNOT delete a promoteur if a programme is attached",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305046830
+        },
+        "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6": {
+          "id": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "Frontend",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305046830
+        },
+        "12d3384a-eeb2-4863-9fb9-45585a4622df": {
+          "id": "12d3384a-eeb2-4863-9fb9-45585a4622df",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "NO ERROR on activity tab",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1768305027891
+        },
+        "19d5a4e3-30a1-44d7-8aac-0e115ad91797": {
+          "id": "19d5a4e3-30a1-44d7-8aac-0e115ad91797",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "text": "User with SUFFICIENT rights is GIVEN access",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305024082
+        },
+        "1cc8688f-1de3-4854-83b9-9b344b1ff269": {
+          "id": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "Member tab",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305027891
+        },
+        "1cd1159c-33fc-4ec9-9e8d-49ae22ae368e": {
+          "id": "1cd1159c-33fc-4ec9-9e8d-49ae22ae368e",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN modify a programme - NOT IMPLEMENTED",
+          "checked": true,
+          "order": 5,
+          "completedAt": 1768305027891
+        },
+        "1f102820-1298-4781-96f4-f2d3478c1fd0": {
+          "id": "1f102820-1298-4781-96f4-f2d3478c1fd0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CANNOT remove a promoteur if there is a programme",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305027891
+        },
+        "20963c8c-b689-496f-9f96-1c4637097d04": {
+          "id": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "Back office",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305044421
+        },
+        "21978450-815e-42d5-9137-19a5bceb1c6b": {
+          "id": "21978450-815e-42d5-9137-19a5bceb1c6b",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN delete an Étude",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305027891
+        },
+        "33a61c15-7279-43b9-a04b-0d8a5cc905e4": {
+          "id": "33a61c15-7279-43b9-a04b-0d8a5cc905e4",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User with NO account is DENIED access",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305046830
+        },
+        "3596976a-01c6-4ec9-b366-707ef620829a": {
+          "id": "3596976a-01c6-4ec9-b366-707ef620829a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN see PDF",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305046830
+        },
+        "3b5efd20-8322-4269-9256-7fe986c792dd": {
+          "id": "3b5efd20-8322-4269-9256-7fe986c792dd",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "ENVARS to add/modify",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305057175
+        },
+        "3caec97c-7f72-4a81-a6b2-1e373181695a": {
+          "id": "3caec97c-7f72-4a81-a6b2-1e373181695a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN modify an Étude",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305027891
+        },
+        "3ea1c7a9-fb7a-46de-a84e-ffb6bd3485c1": {
+          "id": "3ea1c7a9-fb7a-46de-a84e-ffb6bd3485c1",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+          "text": "User CAN add member",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305027891
+        },
+        "452ad26c-926b-4ebd-8ec3-5f1fee40e7fc": {
+          "id": "452ad26c-926b-4ebd-8ec3-5f1fee40e7fc",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "text": "User with NO account is DENIED access",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305021130
+        },
+        "46961441-1eeb-4b69-adef-4e7a5cab45e5": {
+          "id": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "Promoteur tab",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305027891
+        },
+        "46b208cd-1f72-421e-96d1-e87fa2f6ea39": {
+          "id": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Document details",
+          "checked": true,
+          "order": 5,
+          "completedAt": 1768305046830
+        },
+        "4799ad47-e598-4419-8ae6-b61eb720695b": {
+          "id": "4799ad47-e598-4419-8ae6-b61eb720695b",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+          "text": "User CAN submit new document",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305046830
+        },
+        "5efa2765-41cd-4c35-869a-10e6bb73bf69": {
+          "id": "5efa2765-41cd-4c35-869a-10e6bb73bf69",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "694064fe-20e1-40df-b755-86b221f15159",
+          "text": "Programme",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305046830
+        },
+        "63bb8f2e-9e08-42ff-982a-540d7f19b97d": {
+          "id": "63bb8f2e-9e08-42ff-982a-540d7f19b97d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "text": "User CAN modify team members",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305046830
+        },
+        "665c5698-ce65-48d7-a317-74b3db843cea": {
+          "id": "665c5698-ce65-48d7-a317-74b3db843cea",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "NO ERROR on AI Efficiency panel loads with",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305043759
+        },
+        "694064fe-20e1-40df-b755-86b221f15159": {
+          "id": "694064fe-20e1-40df-b755-86b221f15159",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Admin - Promoteur",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305046830
+        },
+        "7064c958-86d9-4765-8852-0fc82da6ef2d": {
+          "id": "7064c958-86d9-4765-8852-0fc82da6ef2d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN delete a programme - NOT IMPLEMENTED",
+          "checked": true,
+          "order": 6,
+          "completedAt": 1768305027891
+        },
+        "72830277-5604-490d-bbec-aae8583e6e2f": {
+          "id": "72830277-5604-490d-bbec-aae8583e6e2f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "Logs are accurate",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1768305046830
+        },
+        "72a624c4-c303-4d64-a443-6e88c593a423": {
+          "id": "72a624c4-c303-4d64-a443-6e88c593a423",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN see extracted information",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305046830
+        },
+        "74eb3e61-243b-4e95-bf2b-79eae66e3e5d": {
+          "id": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "Spécific Étude page",
+          "checked": true,
+          "order": 5,
+          "completedAt": 1768305027891
+        },
+        "7528529a-f779-40f6-a4f7-349fab8321a0": {
+          "id": "7528529a-f779-40f6-a4f7-349fab8321a0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+          "text": "User CAN access documents from étude",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305046830
+        },
+        "753937c7-022a-4a79-b0f1-40b46651da55": {
+          "id": "753937c7-022a-4a79-b0f1-40b46651da55",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "1cc8688f-1de3-4854-83b9-9b344b1ff269",
+          "text": "User CAN remove member",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305027891
+        },
+        "75cfba30-254d-443b-bf8e-f5bb545ccb3e": {
+          "id": "75cfba30-254d-443b-bf8e-f5bb545ccb3e",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User with MULTIPLE études can pick which one they want to proceed with",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305046830
+        },
+        "78c7f38c-74e8-4dce-9420-ef91de600ee6": {
+          "id": "78c7f38c-74e8-4dce-9420-ef91de600ee6",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "N8N mail flow SUCCESSFUL",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305055366
+        },
+        "7be05b8f-b4ea-4674-abc7-7ba6e539a2e0": {
+          "id": "7be05b8f-b4ea-4674-abc7-7ba6e539a2e0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN add a promoteur",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305027891
+        },
+        "7d744afe-44b3-4c26-9bb0-3c8e35fb21bc": {
+          "id": "7d744afe-44b3-4c26-9bb0-3c8e35fb21bc",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN remove a promoteur if there is no programme",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305027891
+        },
+        "8ab2c38a-a75d-4341-9039-5bbc339c151a": {
+          "id": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "Études",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305027891
+        },
+        "8e15d4ca-965d-4c3f-9b75-6d9a8dca5c1f": {
+          "id": "8e15d4ca-965d-4c3f-9b75-6d9a8dca5c1f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "NO ERROR on documents page",
+          "checked": true,
+          "order": 3,
+          "completedAt": 1768305027891
+        },
+        "8f321667-f4f6-4332-b218-06f09d46bee9": {
+          "id": "8f321667-f4f6-4332-b218-06f09d46bee9",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "74eb3e61-243b-4e95-bf2b-79eae66e3e5d",
+          "text": "NO ERROR on overview tab",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305027891
+        },
+        "96a7c2ce-94c4-43f1-9883-24a9856f108f": {
+          "id": "96a7c2ce-94c4-43f1-9883-24a9856f108f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "User CAN navigate to a specific Étude page",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1768305027891
+        },
+        "979d1d59-64e5-474f-a771-033730b8ba6f": {
+          "id": "979d1d59-64e5-474f-a771-033730b8ba6f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "095a0fb5-f4f7-4ff3-baf8-856da182046d",
+          "text": "User with INSUFFICIENT rights is DENIED access || test1@notaire.fr 57Q8,EPs",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305022973
+        },
+        "9ace0f75-86cc-4ede-9f0f-613d566b1578": {
+          "id": "9ace0f75-86cc-4ede-9f0f-613d566b1578",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "text": "User CAN remove team member",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305046830
+        },
+        "9c03bf3c-79e3-46c1-aaac-e0e4dff2b18f": {
+          "id": "9c03bf3c-79e3-46c1-aaac-e0e4dff2b18f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "d27975c1-5d41-446e-a527-5b5915485593",
+          "text": "User CAN log out",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305046830
+        },
+        "a5b99910-3078-40ef-9b0c-98925f8600a7": {
+          "id": "a5b99910-3078-40ef-9b0c-98925f8600a7",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": null,
+          "text": "Database rebuild if applicable",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1768305057867
+        },
+        "a69e80fa-f771-4e14-9466-e5f82e5e8764": {
+          "id": "a69e80fa-f771-4e14-9466-e5f82e5e8764",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "NO ERROR System panel loads with",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1768305044421
+        },
+        "a89dd784-8f2f-4776-9444-288670ff3a49": {
+          "id": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Login",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305046830
+        },
+        "b461a672-a332-4d35-9905-b7f1d043807d": {
+          "id": "b461a672-a332-4d35-9905-b7f1d043807d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+          "text": "User CAN log out",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305026688
+        },
+        "b9219e43-d6db-4edf-b7ca-c53cb7b515d0": {
+          "id": "b9219e43-d6db-4edf-b7ca-c53cb7b515d0",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CAN modify a promoteur",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305046830
+        },
+        "b9b715c3-d1d6-4718-90d1-abfc2293d488": {
+          "id": "b9b715c3-d1d6-4718-90d1-abfc2293d488",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN add a programme to a promoteur",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1768305027891
+        },
+        "c7c05ff4-6d42-4002-8a1b-ee22c2abb308": {
+          "id": "c7c05ff4-6d42-4002-8a1b-ee22c2abb308",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CAN add a promoteur",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305046830
+        },
+        "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01": {
+          "id": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "20963c8c-b689-496f-9f96-1c4637097d04",
+          "text": "Dashboard",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305026688
+        },
+        "ccfda589-8749-4ab0-9814-c8d047d8b583": {
+          "id": "ccfda589-8749-4ab0-9814-c8d047d8b583",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "text": "User CAN delete a promoteur if 0 programme is attached",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305046830
+        },
+        "d27975c1-5d41-446e-a527-5b5915485593": {
+          "id": "d27975c1-5d41-446e-a527-5b5915485593",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Dashboard",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305046830
+        },
+        "d7f9c029-d8d8-4ee7-ba05-2133e9c6465d": {
+          "id": "d7f9c029-d8d8-4ee7-ba05-2133e9c6465d",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "8ab2c38a-a75d-4341-9039-5bbc339c151a",
+          "text": "NO ERROR when fetching études",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305027891
+        },
+        "e710d1b2-9beb-4467-8c0f-b959ffe7821f": {
+          "id": "e710d1b2-9beb-4467-8c0f-b959ffe7821f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "text": "User CAN add team members || TODO: Distinction new email/existing email",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305046830
+        },
+        "e736bc66-40c4-4a60-a237-a9e9105e1f5f": {
+          "id": "e736bc66-40c4-4a60-a237-a9e9105e1f5f",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46961441-1eeb-4b69-adef-4e7a5cab45e5",
+          "text": "User CAN modify a promoteur - NOT IMPLEMENTED",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305027891
+        },
+        "ef57739b-787c-4c60-84bf-d14bdb6e22af": {
+          "id": "ef57739b-787c-4c60-84bf-d14bdb6e22af",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "694064fe-20e1-40df-b755-86b221f15159",
+          "text": "Promoteur",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305046830
+        },
+        "f2e2d57a-58f4-49de-bd77-8dccf199501b": {
+          "id": "f2e2d57a-58f4-49de-bd77-8dccf199501b",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User with NO étude is warned that they need an étude to proceed",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305046830
+        },
+        "f39962dd-0572-4fb6-a33b-7d426d01124a": {
+          "id": "f39962dd-0572-4fb6-a33b-7d426d01124a",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "cb1c5a82-7060-48ce-b3fd-c34c6c8cfc01",
+          "text": "Dashboard is corrrectly displayed",
+          "checked": true,
+          "order": 0,
+          "completedAt": 1768305026688
+        },
+        "f7e8755a-a692-4ca0-9e3f-16d3aa76cf88": {
+          "id": "f7e8755a-a692-4ca0-9e3f-16d3aa76cf88",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "46b208cd-1f72-421e-96d1-e87fa2f6ea39",
+          "text": "User CAN validate extracted info",
+          "checked": true,
+          "order": 2,
+          "completedAt": 1768305046830
+        },
+        "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e": {
+          "id": "fa621deb-eaa2-41d5-aa5b-08d2ac062f3e",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "11090403-fa7f-48cb-b60a-e9ba3a9f6cb6",
+          "text": "Admin - Gestion",
+          "checked": true,
+          "order": 4,
+          "completedAt": 1768305046830
+        },
+        "fc59e6a5-898b-4229-b60f-27728333bba9": {
+          "id": "fc59e6a5-898b-4229-b60f-27728333bba9",
+          "templateId": "febb6652-6682-4cb1-a4c3-f78503779f34",
+          "parentId": "a89dd784-8f2f-4776-9444-288670ff3a49",
+          "text": "User WITH an account is GIVEN access",
+          "checked": true,
+          "order": 1,
+          "completedAt": 1768305046830
+        }
+      },
+      "updatedAt": 1768305057867,
+      "completedAt": 1768305057867
+    }
+  ]
+}

@@ -1,23 +1,24 @@
 <script lang="ts">
 	import { recordStore } from '$lib/stores/records.svelte';
-	import { formatDuration } from '$lib/utils/time';
+	import { formatDuration, getDisplayElapsedMs } from '$lib/utils/time';
 	import { Pause, Play } from 'lucide-svelte';
 
 	let { record, readonly = false } = $props();
 
-	let elapsedMs = $state(record.elapsedMs);
+	let elapsedMs = $state(getDisplayElapsedMs(record));
 	let intervalId: any;
 
 	function tick() {
-		if (record.isPaused) {
-			elapsedMs = record.elapsedMs;
+		if (readonly || record.isPaused || record.completedAt) {
+			elapsedMs = getDisplayElapsedMs(record);
 		} else {
-			elapsedMs = record.elapsedMs + (Date.now() - record.resumedAt);
+			const resumedAt = record.resumedAt ?? record.createdAt;
+			elapsedMs = record.elapsedMs + (Date.now() - resumedAt);
 		}
 	}
 
 	async function togglePause() {
-		if (readonly) return;
+		if (readonly || record.completedAt) return;
 		const now = Date.now();
 		if (record.isPaused) {
 			// Resuming
@@ -30,7 +31,7 @@
 	}
 
 	$effect(() => {
-		if (!record.isPaused && !readonly) {
+		if (!record.isPaused && !readonly && !record.completedAt) {
 			intervalId = setInterval(tick, 100);
 		} else {
 			tick(); // Static update

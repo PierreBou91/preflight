@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { db } from '$lib/db';
 	import { workspaceStore } from '$lib/stores/workspace.svelte';
 	import { downloadFile } from '$lib/utils/fileActions';
@@ -163,6 +165,9 @@
 					<button
 						onclick={() => {
 							workspaceStore.setActive(ws.id);
+							if ($page.url.pathname.startsWith('/run/')) {
+								goto('/');
+							}
 							if (typeof window !== 'undefined' && window.innerWidth < 1024) isSidebarOpen = false;
 						}}
 						class="flex flex-1 items-center gap-2 p-2 text-left transition-colors hover:bg-bg-elevated {workspaceStore.activeId ===

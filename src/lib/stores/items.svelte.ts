@@ -66,6 +66,7 @@ class ItemStore {
       templateId: this.templateId,
       parentId,
       text,
+      status: 'unchecked',
       checked: false,
       order: maxOrder + 1
     };

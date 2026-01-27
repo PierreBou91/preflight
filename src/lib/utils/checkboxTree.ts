@@ -1,5 +1,15 @@
 // lib/utils/checkboxTree.ts
-import type { ChecklistItem } from '$lib/types';
+import type { ChecklistItem, ChecklistStatus } from '$lib/types';
+
+const TERMINAL_STATUSES = new Set<ChecklistStatus>(['validated', 'failed', 'notApplicable']);
+
+export function getItemStatus(item: ChecklistItem): ChecklistStatus {
+	return item.status ?? (item.checked ? 'validated' : 'unchecked');
+}
+
+export function isTerminalStatus(status: ChecklistStatus): boolean {
+	return TERMINAL_STATUSES.has(status);
+}
 
 /**
  * Toggles an item and propagates the state to descendants and ancestors.
@@ -7,27 +17,44 @@ import type { ChecklistItem } from '$lib/types';
 export function toggleItem(
 	itemId: string,
 	items: Record<string, ChecklistItem>,
-	checked: boolean
+	status: ChecklistStatus,
+	justification?: string
 ): Record<string, ChecklistItem> {
 	const updated = { ...items };
 	const now = Date.now();
 
-	// 1. Set this item
-	updated[itemId] = {
-		...updated[itemId],
-		checked,
-		completedAt: checked ? now : undefined
+	const applyStatus = (
+		targetId: string,
+		nextStatus: ChecklistStatus,
+		nextJustification?: string,
+		preserveJustification: boolean = false
+	) => {
+		const existing = updated[targetId];
+		const shouldKeep =
+			preserveJustification &&
+			(nextStatus === 'failed' || nextStatus === 'notApplicable') &&
+			nextJustification === undefined;
+
+		updated[targetId] = {
+			...existing,
+			status: nextStatus,
+			checked: nextStatus === 'validated',
+			justification:
+				nextStatus === 'failed' || nextStatus === 'notApplicable'
+					? nextJustification ?? (shouldKeep ? existing.justification : undefined)
+					: undefined,
+			completedAt: nextStatus === 'unchecked' ? undefined : now
+		};
 	};
+
+	// 1. Set this item
+	applyStatus(itemId, status, justification, true);
 
 	// 2. Cascade down to all descendants
 	const cascadeDown = (parentId: string) => {
 		Object.values(updated).forEach((item) => {
 			if (item.parentId === parentId) {
-				updated[item.id] = {
-					...updated[item.id],
-					checked,
-					completedAt: checked ? now : undefined
-				};
+				applyStatus(item.id, status);
 				cascadeDown(item.id);
 			}
 		});
@@ -38,15 +65,23 @@ export function toggleItem(
 	let currentParentId = updated[itemId].parentId;
 	while (currentParentId) {
 		const siblings = Object.values(updated).filter((i) => i.parentId === currentParentId);
-		const allChecked = siblings.every((s) => s.checked);
+		const siblingStatuses = siblings.map((s) => getItemStatus(s));
+		const hasUnchecked = siblingStatuses.some((status) => status === 'unchecked');
+		const hasFailed = siblingStatuses.some((status) => status === 'failed');
+		const allNotApplicable = siblingStatuses.every((status) => status === 'notApplicable');
+		const allTerminal = siblingStatuses.every((status) => status !== 'unchecked');
+		const derivedStatus = hasUnchecked
+			? ('unchecked' as ChecklistStatus)
+			: allTerminal
+				? hasFailed
+					? ('failed' as ChecklistStatus)
+					: allNotApplicable
+						? ('notApplicable' as ChecklistStatus)
+						: ('validated' as ChecklistStatus)
+				: ('unchecked' as ChecklistStatus);
 
-		// If all siblings are checked, parent is checked.
-		// If at least one is unchecked, parent is unchecked.
-		updated[currentParentId] = {
-			...updated[currentParentId],
-			checked: allChecked,
-			completedAt: allChecked ? now : undefined
-		};
+		// If all siblings share the same status, inherit it. Otherwise, parent becomes unchecked.
+		applyStatus(currentParentId, derivedStatus);
 		currentParentId = updated[currentParentId].parentId;
 	}
 
@@ -60,13 +95,12 @@ export function getIndeterminateState(itemId: string, items: Record<string, Chec
 	const children = Object.values(items).filter((i) => i.parentId === itemId);
 	if (children.length === 0) return false;
 
-	const checkedCount = children.filter((c) => c.checked).length;
+	const childStatuses = children.map((c) => getItemStatus(c));
 	const hasIndeterminateChild = children.some((c) => getIndeterminateState(c.id, items));
+	const hasUnchecked = childStatuses.some((status) => status === 'unchecked');
 
 	// Indeterminate if:
-	// - Some (but not all) direct children are checked
-	// - OR any child is indeterminate but not all are fully checked
-	const allChecked = children.every((c) => c.checked);
-	
-	return (checkedCount > 0 && !allChecked) || hasIndeterminateChild;
+	// - Any child is unchecked
+	// - OR any child is already indeterminate
+	return hasUnchecked || hasIndeterminateChild;
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { recordStore } from '$lib/stores/records.svelte';
+	import { getItemStatus, isTerminalStatus } from '$lib/utils/checkboxTree';
 	import { ArrowLeft, CircleCheck, User } from 'lucide-svelte';
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import RunTimer from './RunTimer.svelte';
@@ -23,11 +24,16 @@
 		if (!record) return 0;
 		const total = Object.values(record.items).length;
 		if (total === 0) return 0;
-		const checked = Object.values(record.items).filter((i) => i.checked).length;
-		return Math.round((checked / total) * 100);
+		const resolved = Object.values(record.items).filter((i) =>
+			isTerminalStatus(getItemStatus(i))
+		).length;
+		return Math.round((resolved / total) * 100);
 	});
 
 	let isComplete = $derived(progress === 100);
+	let hasFailed = $derived(
+		record ? Object.values(record.items).some((item) => getItemStatus(item) === 'failed') : false
+	);
 
 	async function handleFinish() {
 		goto('/');
@@ -61,9 +67,13 @@
 							>
 						</div>
 						{#if isComplete}
-							<span class="non-italic flex items-center gap-1 font-bold text-success">
+							<span
+								class="non-italic flex items-center gap-1 font-bold {hasFailed
+									? 'text-error'
+									: 'text-success'}"
+							>
 								<CircleCheck size={14} />
-								COMPLETE
+								{hasFailed ? 'COMPLETED WITH FAILURES' : 'COMPLETE'}
 							</span>
 						{/if}
 					</div>

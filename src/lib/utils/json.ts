@@ -1,4 +1,4 @@
-import type { ChecklistItem, PreflightRecord, PreflightTemplate, Workspace } from '$lib/types';
+import type { ChecklistItem, ChecklistStatus, PreflightRecord, PreflightTemplate, Workspace } from '$lib/types';
 
 export interface PreflightExportJSON {
 	preflight: {
@@ -9,6 +9,31 @@ export interface PreflightExportJSON {
 	templates: PreflightTemplate[];
 	items: ChecklistItem[];
 	records: PreflightRecord[];
+}
+
+const TERMINAL_STATUSES = new Set<ChecklistStatus>(['validated', 'failed', 'notApplicable']);
+
+function normalizeItem(item: ChecklistItem): ChecklistItem {
+	const status = item.status ?? (item.checked ? 'validated' : 'unchecked');
+	const normalized: ChecklistItem = {
+		...item,
+		status,
+		checked: status === 'validated',
+		justification: TERMINAL_STATUSES.has(status) ? item.justification : undefined,
+		completedAt: status === 'unchecked' ? undefined : item.completedAt
+	};
+
+	return normalized;
+}
+
+function normalizeRecord(record: PreflightRecord): PreflightRecord {
+	const items = record.items
+		? Object.fromEntries(
+				Object.entries(record.items).map(([id, item]) => [id, normalizeItem(item)])
+			)
+		: {};
+
+	return { ...record, items };
 }
 
 /**
@@ -57,7 +82,7 @@ export function importFromJson(jsonString: string): {
 	return {
 		workspace: data.workspace,
 		templates: data.templates,
-		items: data.items,
-		records: data.records || []
+		items: (data.items || []).map(normalizeItem),
+		records: (data.records || []).map(normalizeRecord)
 	};
 }

@@ -22,6 +22,19 @@
 	);
 
 	let isCreating = $state(false);
+	let newWorkspaceName = $state('');
+	let isCreatingWorkspace = $state(false);
+
+	async function handleCreateWorkspace() {
+		if (!newWorkspaceName.trim()) return;
+		isCreatingWorkspace = true;
+		try {
+			await workspaceStore.create(newWorkspaceName.trim());
+			newWorkspaceName = '';
+		} finally {
+			isCreatingWorkspace = false;
+		}
+	}
 
 	async function handleCreateTemplate() {
 		isCreating = true;
@@ -66,6 +79,22 @@
 	<div class="flex h-full flex-col items-center justify-center space-y-4 text-text-secondary">
 		<FileText size={48} strokeWidth={1} />
 		<p class="text-xl italic">Select or create a workspace to begin.</p>
+		<div class="w-full max-w-sm space-y-2">
+			<input
+				type="text"
+				bind:value={newWorkspaceName}
+				placeholder="Workspace name..."
+				onkeydown={(e) => e.key === 'Enter' && handleCreateWorkspace()}
+				class="w-full border-2 border-text-secondary bg-bg-primary p-2 text-sm outline-none focus:border-accent"
+			/>
+			<button
+				onclick={handleCreateWorkspace}
+				disabled={isCreatingWorkspace}
+				class="btn-primary w-full py-2 text-xs font-bold tracking-widest uppercase disabled:cursor-not-allowed disabled:opacity-50"
+			>
+				{isCreatingWorkspace ? 'Creating...' : 'Create Workspace'}
+			</button>
+		</div>
 	</div>
 {:else}
 	<div class="mx-auto max-w-5xl space-y-8">

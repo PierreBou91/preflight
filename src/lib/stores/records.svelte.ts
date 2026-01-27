@@ -1,7 +1,7 @@
 // lib/stores/records.svelte.ts
 import { db } from '$lib/db';
-import type { ChecklistItem, PreflightRecord } from '$lib/types';
-import { toggleItem as toggleCascade } from '$lib/utils/checkboxTree';
+import type { ChecklistItem, ChecklistStatus, PreflightRecord } from '$lib/types';
+import { getItemStatus, isTerminalStatus, toggleItem as toggleCascade } from '$lib/utils/checkboxTree';
 import { liveQuery } from 'dexie';
 
 class RecordStore {
@@ -32,7 +32,7 @@ class RecordStore {
 
 		const itemsMap: Record<string, ChecklistItem> = {};
 		templateItems.forEach((item) => {
-			itemsMap[item.id] = { ...item, checked: false };
+			itemsMap[item.id] = { ...item, status: 'unchecked', checked: false, justification: undefined };
 		});
 
 		const newRecord: PreflightRecord = {
@@ -52,21 +52,49 @@ class RecordStore {
 		return id;
 	}
 
-	async toggleItem(recordId: string, itemId: string) {
+	async toggleItem(recordId: string, itemId: string, status: ChecklistStatus, justification?: string) {
 		const record = await db.records.get(recordId);
 		if (!record) return;
 
-		const isChecked = !record.items[itemId].checked;
-		const updatedItems = toggleCascade(itemId, record.items, isChecked);
-		
-		const allCompleted = Object.values(updatedItems).every((item) => item.checked);
-		const completedAt = allCompleted ? Date.now() : undefined;
-
-		await db.records.update(recordId, { 
+		const updatedItems = toggleCascade(itemId, record.items, status, justification);
+		const allCompleted = Object.values(updatedItems).every((item) =>
+			isTerminalStatus(getItemStatus(item))
+		);
+		const now = Date.now();
+		const completedAt = allCompleted ? record.completedAt ?? now : undefined;
+		const updates: Partial<PreflightRecord> = {
 			items: updatedItems,
 			completedAt,
-			updatedAt: Date.now() // Optional, but good for tracking
-		});
+			updatedAt: now
+		};
+
+		if (allCompleted && !record.completedAt) {
+			const resumedAt = record.resumedAt ?? record.createdAt;
+			const elapsedMs = record.isPaused ? record.elapsedMs : record.elapsedMs + (now - resumedAt);
+			updates.elapsedMs = elapsedMs;
+			updates.isPaused = true;
+			updates.resumedAt = now;
+		}
+
+		await db.records.update(recordId, updates);
+	}
+
+	async updateJustification(recordId: string, itemId: string, justification: string) {
+		const record = await db.records.get(recordId);
+		if (!record) return;
+		const items = { ...record.items };
+		const item = items[itemId];
+		if (!item) return;
+
+		items[itemId] = {
+			...item,
+			justification:
+				getItemStatus(item) === 'failed' || getItemStatus(item) === 'notApplicable'
+					? justification.trim() || undefined
+					: undefined
+		};
+
+		await db.records.update(recordId, { items, updatedAt: Date.now() });
 	}
 
 	async updateTimer(recordId: string, elapsedMs: number, resumedAt: number, isPaused: boolean) {

@@ -1,11 +1,15 @@
 // lib/types/index.ts
 
+export type ChecklistStatus = 'unchecked' | 'validated' | 'failed' | 'notApplicable';
+
 export interface ChecklistItem {
 	id: string;
 	templateId: string;
 	parentId: string | null;
 	text: string;
-	checked: boolean;
+	status?: ChecklistStatus;
+	justification?: string;
+	checked?: boolean; // Legacy (pre-status) field
 	order: number;
 	completedAt?: number; // Timestamp when checked
 }

@@ -3,7 +3,9 @@
 	import { recordStore } from '$lib/stores/records.svelte';
 	import { templateStore } from '$lib/stores/templates.svelte';
 	import { workspaceStore } from '$lib/stores/workspace.svelte';
-	import { formatDuration } from '$lib/utils/time';
+	import { getItemStatus } from '$lib/utils/checkboxTree';
+	import { formatDuration, getDisplayElapsedMs } from '$lib/utils/time';
+	import type { PreflightRecord } from '$lib/types';
 	import { AlertCircle, ArrowLeft, CheckCircle2, Clock, Trash2 } from 'lucide-svelte';
 
 	let activeWorkspace = $derived(
@@ -33,6 +35,45 @@
 			await recordStore.delete(recordToDelete.id);
 			recordToDelete = null;
 		}
+	}
+
+	function getStatusSummary(record: PreflightRecord): string {
+		const counts = {
+			passed: 0,
+			failed: 0,
+			na: 0,
+			pending: 0
+		};
+
+		Object.values(record.items).forEach((item) => {
+			const status = getItemStatus(item);
+			if (status === 'validated') counts.passed += 1;
+			else if (status === 'failed') counts.failed += 1;
+			else if (status === 'notApplicable') counts.na += 1;
+			else counts.pending += 1;
+		});
+
+		const parts: string[] = [];
+		if (counts.passed) parts.push(`${counts.passed} passed`);
+		if (counts.na) parts.push(`${counts.na} NA`);
+		if (counts.failed) parts.push(`${counts.failed} failed`);
+		if (counts.pending) parts.push(`${counts.pending} pending`);
+
+		return parts.length > 0 ? parts.join(', ') : 'No items';
+	}
+
+	function hasFailedItems(record: PreflightRecord): boolean {
+		return Object.values(record.items).some((item) => getItemStatus(item) === 'failed');
+	}
+
+	function getCompletionLabel(record: PreflightRecord): string {
+		if (!record.completedAt) return 'Pending';
+		return hasFailedItems(record) ? 'Completed with failures' : 'Complete';
+	}
+
+	function getCompletionTone(record: PreflightRecord): 'success' | 'warning' | 'error' {
+		if (!record.completedAt) return 'warning';
+		return hasFailedItems(record) ? 'error' : 'success';
 	}
 </script>
 
@@ -76,21 +117,22 @@
 							<h3 class="text-lg font-bold text-text-primary">
 								{record.name}
 							</h3>
+						<span
+							class="flex items-center gap-1 border px-2 py-0.5 text-[10px] font-bold tracking-widest uppercase {getCompletionTone(
+							record
+						) === 'success'
+							? 'border-success/30 bg-success/20 text-success'
+							: getCompletionTone(record) === 'error'
+								? 'border-error/30 bg-error/20 text-error'
+								: 'border-warning/30 bg-warning/20 text-warning'}"
+						>
 							{#if record.completedAt}
-								<span
-									class="flex items-center gap-1 border border-success/30 bg-success/20 px-2 py-0.5 text-[10px] font-bold tracking-widest text-success uppercase"
-								>
-									<CheckCircle2 size={10} />
-									Complete
-								</span>
+								<CheckCircle2 size={10} />
 							{:else}
-								<span
-									class="flex items-center gap-1 border border-warning/30 bg-warning/20 px-2 py-0.5 text-[10px] font-bold tracking-widest text-warning uppercase"
-								>
-									<AlertCircle size={10} />
-									In Progress
-								</span>
+								<AlertCircle size={10} />
 							{/if}
+							{getCompletionLabel(record)}
+						</span>
 						</div>
 
 						<div class="flex items-center gap-4 font-mono text-xs text-text-secondary">
@@ -99,8 +141,9 @@
 								<span>{new Date(record.createdAt).toLocaleString()}</span>
 							</div>
 							<div>
-								Duration: {formatDuration(record.elapsedMs)}
+								Duration: {formatDuration(getDisplayElapsedMs(record))}
 							</div>
+							<div class="text-text-secondary/90">Status: {getStatusSummary(record)}</div>
 						</div>
 					</div>
 

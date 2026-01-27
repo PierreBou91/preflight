@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { recordStore } from '$lib/stores/records.svelte';
-	import type { ChecklistItem } from '$lib/types';
-	import { getIndeterminateState } from '$lib/utils/checkboxTree';
-	import { Check, ChevronRight } from 'lucide-svelte';
+	import type { ChecklistItem, ChecklistStatus } from '$lib/types';
+	import { getIndeterminateState, getItemStatus } from '$lib/utils/checkboxTree';
+	import { Check, ChevronRight, Minus, X } from 'lucide-svelte';
 
 	let {
 		item,
@@ -16,8 +16,12 @@
 		readonly?: boolean;
 	} = $props();
 
-	let checkboxRef: HTMLInputElement | null = $state(null);
 	let isCollapsed = $state(false);
+	let justificationDraft = $state(item.justification ?? '');
+	let isJustificationFocused = $state(false);
+
+	let status = $derived(getItemStatus(item));
+	let isIndeterminate = $derived(getIndeterminateState(item.id, items));
 
 	let children = $derived(
 		Object.values(items)
@@ -26,22 +30,47 @@
 	);
 
 	$effect(() => {
-		if (checkboxRef) {
-			checkboxRef.indeterminate = getIndeterminateState(item.id, items);
+		if (status !== 'unchecked') {
+			isCollapsed = true;
 		}
 	});
 
 	$effect(() => {
-		if (item.checked) {
-			isCollapsed = true;
+		if (!isJustificationFocused) {
+			justificationDraft = item.justification ?? '';
 		}
 	});
+
+	$effect(() => {
+		if (status !== 'failed' && status !== 'notApplicable') {
+			justificationDraft = '';
+		}
+	});
+
+	function handleStatusClick(nextStatus: ChecklistStatus) {
+		if (readonly) return;
+		const current = getItemStatus(item);
+		const updatedStatus = current === nextStatus ? 'unchecked' : nextStatus;
+		recordStore.toggleItem(recordStore.activeRecordId!, item.id, updatedStatus);
+	}
+
+	async function handleJustificationBlur() {
+		if (readonly) return;
+		isJustificationFocused = false;
+		await recordStore.updateJustification(recordStore.activeRecordId!, item.id, justificationDraft);
+	}
 </script>
 
 <div
-	class="group flex items-center gap-3 border-l-2 p-3 transition-colors {item.checked
-		? 'border-success bg-success/5'
-		: 'border-text-secondary/20 hover:bg-bg-elevated/50'}"
+	class="group flex items-start gap-3 border-l-2 p-3 transition-colors {isIndeterminate
+		? 'border-accent/40 bg-accent/5'
+		: status === 'validated'
+			? 'border-success bg-success/5'
+			: status === 'failed'
+				? 'border-error bg-error/5'
+				: status === 'notApplicable'
+					? 'border-warning/50 bg-warning/10'
+					: 'border-text-secondary/20 hover:bg-bg-elevated/50'}"
 	style="margin-left: {depth * 20}px"
 >
 	{#if children.length > 0}
@@ -55,38 +84,91 @@
 		<div class="w-4"></div>
 	{/if}
 
-	<div class="relative flex items-center">
-		<input
-			type="checkbox"
-			bind:this={checkboxRef}
-			checked={item.checked}
+	<div class="flex items-center gap-1">
+		<button
+			onclick={() => handleStatusClick('validated')}
 			disabled={readonly}
-			onchange={() => recordStore.toggleItem(recordStore.activeRecordId!, item.id)}
-			class="h-5 w-5 cursor-pointer appearance-none border-2 border-text-secondary transition-all checked:border-accent checked:bg-accent hover:border-accent disabled:cursor-not-allowed disabled:opacity-50"
-		/>
-		<Check
-			class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-bg-primary opacity-0 transition-opacity peer-checked:opacity-100"
-			size={14}
-			strokeWidth={4}
-		/>
+			title="Validate"
+			class="flex h-7 w-7 items-center justify-center border-2 text-xs transition-colors disabled:cursor-not-allowed disabled:opacity-50 {status ===
+			'validated'
+				? 'border-success bg-success text-bg-primary'
+				: 'border-text-secondary/40 text-text-secondary hover:border-success'}"
+		>
+			<Check size={14} />
+		</button>
+		<button
+			onclick={() => handleStatusClick('failed')}
+			disabled={readonly}
+			title="Fail"
+			class="flex h-7 w-7 items-center justify-center border-2 text-xs transition-colors disabled:cursor-not-allowed disabled:opacity-50 {status ===
+			'failed'
+				? 'border-error bg-error text-bg-primary'
+				: 'border-text-secondary/40 text-text-secondary hover:border-error'}"
+		>
+			<X size={14} />
+		</button>
+		<button
+			onclick={() => handleStatusClick('notApplicable')}
+			disabled={readonly}
+			title="Not applicable"
+			class="flex h-7 w-7 items-center justify-center border-2 text-xs transition-colors disabled:cursor-not-allowed disabled:opacity-50 {status ===
+			'notApplicable'
+				? 'border-warning bg-warning text-bg-primary'
+				: 'border-text-secondary/40 text-text-secondary hover:border-warning'}"
+		>
+			<Minus size={14} />
+		</button>
 	</div>
 
-	<div class="flex-1">
-		<span
-			class="text-sm {item.checked
-				? 'text-text-secondary line-through'
-				: 'text-text-primary'} transition-all"
-		>
-			{item.text}
-		</span>
-		{#if item.completedAt && item.checked}
-			<span class="ml-2 text-[10px] tracking-tighter text-success/50 uppercase">
-				{new Date(item.completedAt).toLocaleTimeString([], {
-					hour: '2-digit',
-					minute: '2-digit',
-					second: '2-digit'
-				})}
+	<div class="flex-1 space-y-1">
+		<div class="flex flex-wrap items-center gap-2">
+			<span
+				class="text-sm {status === 'validated'
+					? 'text-text-secondary line-through'
+					: status === 'failed'
+						? 'text-error'
+						: status === 'notApplicable'
+							? 'text-warning'
+							: 'text-text-primary'} transition-all"
+			>
+				{item.text}
 			</span>
+			{#if isIndeterminate}
+				<span class="text-[10px] tracking-widest text-accent/80 uppercase">Mixed</span>
+			{/if}
+			{#if item.completedAt && status !== 'unchecked'}
+				<span
+					class="text-[10px] tracking-tighter uppercase {status === 'failed'
+						? 'text-error/70'
+						: status === 'notApplicable'
+							? 'text-warning/70'
+							: 'text-success/70'}"
+				>
+					{new Date(item.completedAt).toLocaleTimeString([], {
+						hour: '2-digit',
+						minute: '2-digit',
+						second: '2-digit'
+					})}
+				</span>
+			{/if}
+		</div>
+		{#if status === 'failed' || status === 'notApplicable'}
+			{#if readonly}
+				{#if item.justification}
+					<div class="text-xs text-text-secondary">
+						<span class="font-bold">Justification:</span> {item.justification}
+					</div>
+				{/if}
+			{:else}
+				<input
+					type="text"
+					bind:value={justificationDraft}
+					onfocus={() => (isJustificationFocused = true)}
+					onblur={handleJustificationBlur}
+					placeholder="Optional justification..."
+					class="w-full border border-text-secondary/30 bg-bg-primary px-2 py-1 text-xs outline-none focus:border-accent"
+				/>
+			{/if}
 		{/if}
 	</div>
 </div>

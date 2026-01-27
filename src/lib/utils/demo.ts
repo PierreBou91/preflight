@@ -68,6 +68,7 @@ function buildTemplateWithItems(options: {
 			templateId,
 			parentId: null,
 			text: section.title,
+			status: 'unchecked',
 			checked: false,
 			order: sectionIndex
 		});
@@ -78,6 +79,7 @@ function buildTemplateWithItems(options: {
 				templateId,
 				parentId,
 				text: childText,
+				status: 'unchecked',
 				checked: false,
 				order: childIndex
 			});
@@ -123,9 +125,11 @@ function buildRecordItems(options: {
 		const isChecked = options.completeAll
 			? true
 			: options.checkedIds?.has(item.id) ?? false;
+		const status = isChecked ? 'validated' : 'unchecked';
 		itemMap[item.id] = {
 			...item,
-			checked: isChecked,
+			status,
+			checked: status === 'validated',
 			completedAt: isChecked ? completedAtBase + index * MINUTE : undefined
 		};
 	});
